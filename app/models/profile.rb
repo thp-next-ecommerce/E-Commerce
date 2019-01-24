@@ -1,4 +1,4 @@
 class Profile < ApplicationRecord
 	belongs_to :user
-	has_many :adresses
+	has_many :addresses
 end
