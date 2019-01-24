@@ -20,5 +20,7 @@
 
 FactoryBot.define do
   factory :user do
+    email { 'magic-store@gmail.com' }
+    password { 'password' }
   end
 end
