@@ -3,5 +3,9 @@
 Rails.application.routes.draw do
   require "sidekiq/web"
   mount Sidekiq::Web, at: "/sidekiq"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admins
+  devise_for :users
+  root to: 'static_pages#home'
+  get 'contact', to: 'static_pages#contact'
+  get 'about', to: 'static_pages#about'
 end
