@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_25_130026) do
+ActiveRecord::Schema.define(version: 2019_01_25_132713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,29 @@ ActiveRecord::Schema.define(version: 2019_01_25_130026) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
+    t.string "rarity"
+    t.text "text"
+    t.string "type"
+    t.boolean "premium"
+    t.boolean "has_discount"
+    t.float "original_price"
+    t.integer "discrounted_percentage"
+    t.bigint "edition_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["edition_id"], name: "index_cards_on_edition_id"
+  end
+
+  create_table "editions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -36,6 +59,17 @@ ActiveRecord::Schema.define(version: 2019_01_25_130026) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.integer "available"
+    t.integer "on_hold"
+    t.integer "sold"
+    t.integer "shipped"
+    t.bigint "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_stocks_on_card_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,5 +89,7 @@ ActiveRecord::Schema.define(version: 2019_01_25_130026) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cards", "editions"
   add_foreign_key "profiles", "users"
+  add_foreign_key "stocks", "cards"
 end
