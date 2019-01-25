@@ -2,7 +2,9 @@
 
 Rails.application.routes.draw do
   require "sidekiq/web"
-  mount Sidekiq::Web, at: "/sidekiq"
+  authenticate :admin do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   devise_for :admins
   devise_for :users
   root to: 'static_pages#home'
