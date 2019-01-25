@@ -23,7 +23,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { described_class.new }
 
-  let(:user) { build(:user) }
+  let(:user) { build_stubbed(:user) }
 
   describe 'Database' do
     it { is_expected.to have_db_column(:email).of_type(:string).with_options(default: '', null: false) }
