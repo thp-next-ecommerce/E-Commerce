@@ -56,16 +56,4 @@ RSpec.describe User, type: :model do
       expect(subject).not_to be_valid
     end
   end
-
-  describe 'user confirmation' do
-    let(:user_confirmed) { create(:user) }
-
-    it 'checks the confirmed status if not confirmed' do
-      expect(user_confirmed.confirmed?).to be false
-    end
-    it 'check confimed status if confirmed' do
-      user_confirmed.confirm
-      expect(user_confirmed.confirmed?).to be true
-    end
-  end
 end
