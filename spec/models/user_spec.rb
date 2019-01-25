@@ -69,6 +69,7 @@ RSpec.describe User, type: :model do
     it 'checks the confirmed status' do
       expect(user.confirmed?).to be false
     end
+  end
 
   describe "Associations" do
     it { is_expected.to have_one(:profile) }
