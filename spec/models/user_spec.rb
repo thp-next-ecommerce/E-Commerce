@@ -44,6 +44,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:password) }
   end
 
+  describe "Associations" do
+    it { is_expected.to have_one(:profile) }
+  end
+
   describe 'unit test validation' do
     it 'is valid with valid attibutes' do
       expect(user).to be_valid
@@ -51,22 +55,17 @@ RSpec.describe User, type: :model do
     it 'is not valid without attibutes' do
       expect(subject).not_to be_valid
     end
-    it 'is not valid with wrong email' do
-      subject.email = "testemail"
-      expect(subject).not_to be_valid
-    end
-    it 'is not valid with short password' do
-      subject.password = '1'
-      expect(subject).not_to be_valid
-    end
   end
 
-  describe 'user creation confirmation' do
-    it 'returns valid status after creation' do
-      expect(user).to be_valid
+  describe 'user confirmation' do
+    let(:user_confirmed) { create(:user) }
+
+    it 'checks the confirmed status if not confirmed' do
+      expect(user_confirmed.confirmed?).to be false
     end
-    it 'checks the confirmed status' do
-      expect(user.confirmed?).to be false
+    it 'check confimed status if confirmed' do
+      user_confirmed.confirm
+      expect(user_confirmed.confirmed?).to be true
     end
   end
 end
