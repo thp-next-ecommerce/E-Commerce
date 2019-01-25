@@ -39,6 +39,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
   end
 
+
   describe 'validation' do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }
@@ -46,7 +47,7 @@ RSpec.describe User, type: :model do
 
   describe 'unit test validation' do
     it 'is valid with valid attibutes' do
-      expect(user).to be_valid
+      expect(user).to be_valide
     end
     it 'is not valid without attibutes' do
       expect(subject).not_to be_valid
@@ -68,5 +69,8 @@ RSpec.describe User, type: :model do
     it 'checks the confirmed status' do
       expect(user.confirmed?).to be false
     end
+
+  describe "Associations" do
+    it { is_expected.to have_one(:profile) }
   end
 end
