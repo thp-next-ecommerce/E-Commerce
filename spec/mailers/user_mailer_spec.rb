@@ -5,8 +5,8 @@ require "rails_helper"
 RSpec.describe UserMailer, type: :mailer do
   subject { create(:user) }
 
-  describe 'UserMailer' do
-    it 'send welcome_email after user creation' do
+  describe 'subject .welcome_email' do
+    it 'send after user creation' do
       email = UserMailer.welcome_email(subject)
       assert_emails 1 do
         email.deliver_now
@@ -14,14 +14,15 @@ RSpec.describe UserMailer, type: :mailer do
       expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
     it 'sends the confirmation email at user_creation' do
-      user = User.create(email: "test@gmail.com", password: "password")
+      skip
+      User.create(email: "test@gmail.com", password: "password")
       expect(ActionMailer::Base.deliveries.count).to eq(1)
-      #active_for_authentication?
+      # active_for_authentication?
     end
   end
 
-  describe 'welcome_email UserMailer' do
-    it 'checks email' do
+  describe 'subject .welcome_email' do
+    it 'checks email content' do
       email = UserMailer.welcome_email(subject)
       assert_emails 1 do
         email.deliver_now

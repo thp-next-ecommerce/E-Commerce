@@ -15,7 +15,6 @@
 #  updated_at    :datetime         not null
 #
 
-
 class Address < ApplicationRecord
   belongs_to :profile
 end

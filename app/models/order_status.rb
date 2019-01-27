@@ -10,7 +10,6 @@
 #  updated_at :datetime         not null
 #
 
-
 class OrderStatus < ApplicationRecord
   has_many :orders
 end

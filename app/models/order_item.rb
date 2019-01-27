@@ -14,7 +14,6 @@
 #  updated_at  :datetime         not null
 #
 
-
 class OrderItem < ApplicationRecord
   belongs_to :card
   belongs_to :order

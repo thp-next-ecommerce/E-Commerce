@@ -15,7 +15,6 @@
 #  updated_at    :datetime         not null
 #
 
-
 require 'rails_helper'
 
 RSpec.describe Address, type: :model do
