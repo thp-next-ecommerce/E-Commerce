@@ -12,5 +12,5 @@
 #
 
 class Edition < ApplicationRecord
-  has_many :cards, dependent: :destroy
+  has_many :items, dependent: :destroy
 end
