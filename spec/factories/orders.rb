@@ -10,6 +10,7 @@
 #  shipping        :decimal(12, 2)
 #  total           :decimal(12, 2)
 #  order_status_id :bigint(8)
+#  item_id         :bigint(8)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

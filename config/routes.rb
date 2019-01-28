@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
+  resources :items, only: [:show]
 end

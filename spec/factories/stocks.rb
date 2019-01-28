@@ -9,7 +9,7 @@
 #  on_hold    :integer
 #  sold       :integer
 #  shipped    :integer
-#  card_id    :bigint(8)
+#  item_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
