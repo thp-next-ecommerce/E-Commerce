@@ -20,6 +20,7 @@ FactoryBot.define do
     tax { "9.99" }
     shipping { "9.99" }
     total { "9.99" }
-    order_status { build_stubbed(:order_status) }
+    order_status 
+    user
   end
 end
