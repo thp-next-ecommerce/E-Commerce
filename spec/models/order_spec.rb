@@ -21,7 +21,7 @@ RSpec.describe Order, type: :model do
   subject { build(:order) }
   
   describe 'database and association' do
-    it { is_expected.to have_db_column(:subtotal).of_type(:decimal(12,2) }
+    it { is_expected.to have_db_column(:subtotal).of_type(:decimal) }
     it { is_expected.to have_db_column(:tax).of_type(:decimal) }
     it { is_expected.to have_db_column(:shipping).of_type(:decimal) }
     it { is_expected.to have_db_column(:total).of_type(:decimal) }
@@ -33,11 +33,13 @@ RSpec.describe Order, type: :model do
 
   describe 'assocociation' do
      it 'follows the link of order_status' do
-      skip
       order = create(:order).reload
       expect(order.order_status.orders.first).to eq order
      end
-
+    it 'follows the link of order_status' do
+      order = create(:order).reload
+      expect(order.user.orders.first).to eq order
+     end
   end
 
   it 'is creatable' do
