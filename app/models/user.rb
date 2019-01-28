@@ -26,6 +26,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one :profile, dependent: :destroy
+  has_many :orders, dependent: :nullify
+  has_many :addresses, dependent: :destroy
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later

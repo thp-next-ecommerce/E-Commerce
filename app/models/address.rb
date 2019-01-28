@@ -8,14 +8,13 @@
 #  street_name_1 :string
 #  street_name_2 :string
 #  city          :string
-#  post_code     :integer
+#  postal_code     :integer
 #  country       :string
-#  profile_id    :bigint(8)
+#  user_id    :bigint(8)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 
-
 class Address < ApplicationRecord
-  belongs_to :profile
+  belongs_to :user
 end
