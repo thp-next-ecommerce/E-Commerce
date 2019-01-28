@@ -13,6 +13,6 @@
 
 FactoryBot.define do
   factory :order_status do
-    name { "MyString" }
+    name { "pending" }
   end
 end
