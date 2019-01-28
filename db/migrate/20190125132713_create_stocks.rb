@@ -7,8 +7,7 @@ class CreateStocks < ActiveRecord::Migration[5.2]
       t.integer :on_hold
       t.integer :sold
       t.integer :shipped
-      t.references :card, foreign_key: true
-
+      t.references :item, foreign_key: true
       t.timestamps
     end
   end

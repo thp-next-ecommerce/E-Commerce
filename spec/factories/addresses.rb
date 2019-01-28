@@ -15,7 +15,6 @@
 #  updated_at    :datetime         not null
 #
 
-
 FactoryBot.define do
   factory :address do
     street_name_1 { "MyString" }
