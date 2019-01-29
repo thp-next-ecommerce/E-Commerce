@@ -22,7 +22,7 @@ RSpec.describe OrderStatus, type: :model do
   end
 
   describe "associations" do
-    let(:order_status) { create(:order_status) }
+    let(:order_status) { build(:order_status) }
     let(:order) { create(:order) }
 
     it { is_expected.to have_many(:orders) }
@@ -33,7 +33,6 @@ RSpec.describe OrderStatus, type: :model do
 
     it "follows the relational link to itself through `orders`" do
       order_status.orders << order
-
       expect(order_status.orders.first.order_status).to be_truthy
     end
   end

@@ -23,7 +23,7 @@ FactoryBot.define do
     total { "9.99" }
     user
     #  default status is "In Progress" for a new order
-    order_status_id { 1 }
+    order_status
 
     trait :with_progress_status do
       association :order_status, id: 1, name: "In Progress"
