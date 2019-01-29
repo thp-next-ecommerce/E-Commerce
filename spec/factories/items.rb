@@ -16,12 +16,11 @@
 #
 
 FactoryBot.define do
-  factory :card do
+  factory :item do
     name { "MyString" }
     description { "MyText" }
     has_discount { false }
     original_price { 1.5 }
     discounted_percentage { 1 }
-    edition { nil }
   end
 end
