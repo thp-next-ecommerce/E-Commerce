@@ -26,3 +26,12 @@ Admin.delete_all
 	)
 	p "admin #{i} : créé"
 end
+
+Edition.delete_all
+3.times do |i|
+	Edition.create!(
+		name: Faker::ElderScrolls.unique.region,
+		release_date: Faker::Date.forward(90)
+	)
+	p "edition #{i} : créée"
+end
