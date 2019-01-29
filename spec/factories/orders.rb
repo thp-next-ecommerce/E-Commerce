@@ -12,6 +12,7 @@
 #  order_status_id :bigint(8)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :bigint(8)
 #
 
 FactoryBot.define do
@@ -20,6 +21,7 @@ FactoryBot.define do
     tax { "9.99" }
     shipping { "9.99" }
     total { "9.99" }
-    order_status { nil }
+    order_status
+    user
   end
 end

@@ -5,7 +5,7 @@
 # Table name: order_items
 #
 #  id          :bigint(8)        not null, primary key
-#  card_id     :bigint(8)
+#  item_id     :bigint(8)
 #  order_id    :bigint(8)
 #  unit_price  :decimal(12, 2)
 #  quantity    :integer
@@ -16,8 +16,8 @@
 
 FactoryBot.define do
   factory :order_item do
-    product { nil }
-    order { nil }
+    item
+    order
     unit_price { "9.99" }
     quantity { 1 }
     total_price { "9.99" }

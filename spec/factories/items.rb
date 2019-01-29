@@ -2,31 +2,25 @@
 
 # == Schema Information
 #
-# Table name: cards
+# Table name: items
 #
 #  id                    :bigint(8)        not null, primary key
 #  name                  :string
-#  color                 :string
-#  rarity                :string
-#  text                  :text
-#  type                  :string
-#  premium               :boolean
-#  has_discount          :boolean
+#  description           :text
+#  has_discount          :boolean          default(FALSE)
 #  original_price        :decimal(12, 2)
 #  discounted_percentage :integer
-#  edition_id            :bigint(8)
+#  active                :boolean          default(TRUE)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-#  active                :boolean
 #
 
 FactoryBot.define do
-  factory :card do
+  factory :item do
     name { "MyString" }
     description { "MyText" }
     has_discount { false }
     original_price { 1.5 }
     discounted_percentage { 1 }
-    edition { nil }
   end
 end

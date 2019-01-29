@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
-  subject { create(:user) }
+  subject(:user) { create(:user) }
 
   describe 'user creation confirmation' do
     it 'send an email to user' do
@@ -18,11 +18,9 @@ RSpec.describe UserMailer, type: :mailer do
 
   describe 'welcome_email UserMailer' do
     it 'checks email' do
-      email = UserMailer.welcome_email(subject)
-      assert_emails 1 do
-        email.deliver_now
-      end
-      assert_equal [subject.email], email.to
+      email = UserMailer.welcome_email(user)
+      assert_emails 1 do email.deliver_now end
+      assert_equal [user.email], email.to
       assert_equal ["hello@magic-store.com"], email.from
       assert_equal "Welcome to the Magic Store", email.subject
     end

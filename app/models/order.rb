@@ -10,13 +10,13 @@
 #  shipping        :decimal(12, 2)
 #  total           :decimal(12, 2)
 #  order_status_id :bigint(8)
-#  item_id :bigint(8)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :bigint(8)
 #
 
 class Order < ApplicationRecord
   belongs_to :order_status
   has_many :order_items, dependent: :destroy
-  belongs_to :item
+  belongs_to :user
 end

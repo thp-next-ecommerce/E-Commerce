@@ -21,7 +21,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { described_class.new }
+  subject(:new_user) { described_class.new }
 
   let(:user) { build_stubbed(:user) }
 
@@ -53,7 +53,7 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
     it 'is not valid without attibutes' do
-      expect(subject).not_to be_valid
+      expect(new_user).not_to be_valid
     end
   end
 end
