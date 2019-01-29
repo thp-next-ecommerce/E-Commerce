@@ -2,18 +2,17 @@
 
 # == Schema Information
 #
-# Table name: cards
+# Table name: items
 #
 #  id                    :bigint(8)        not null, primary key
 #  name                  :string
 #  description           :text
-#  has_discount          :boolean
+#  has_discount          :boolean          default(FALSE)
 #  original_price        :decimal(12, 2)
 #  discounted_percentage :integer
-#  edition_id            :bigint(8)
+#  active                :boolean          default(TRUE)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
-#  active                :boolean
 #
 
 class Item < ApplicationRecord
