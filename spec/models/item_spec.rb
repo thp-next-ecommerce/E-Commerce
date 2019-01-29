@@ -18,11 +18,26 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  describe 'validation and association' do
+  subject(:item) { create(:item) }
+
+  describe 'database' do
     it { is_expected.to have_db_column(:name).of_type(:string).with_options(presence: true) }
     it { is_expected.to have_db_column(:description).of_type(:text) }
     it { is_expected.to have_db_column(:has_discount).of_type(:boolean).with_options(default: false) }
     it { is_expected.to have_db_column(:original_price).of_type(:decimal).with_options(precision: 12, scale: 2) }
     it { is_expected.to have_db_column(:active).of_type(:boolean).with_options(default: true) }
+  end
+
+  describe 'validation' do
+    it { is_expected.to validate_presence_of(:name) }
+  end
+
+  describe 'association' do
+    it { is_expected.to have_many(:order_items) }
+    it { is_expected.to have_one(:stock) }
+  end
+
+  it 'is creatable' do
+    expect(item.id).not_to be_nil
   end
 end
