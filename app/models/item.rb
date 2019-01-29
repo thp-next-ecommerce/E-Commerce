@@ -21,4 +21,8 @@ class Item < ApplicationRecord
 
   default_scope { where(active: true) }
   validates :name, presence: true
+
+  def price
+  	has_discount ? (original_price.to_i * (1 - discounted_percentage.to_f / 100)).round(2) : original_price.to_i
+  end
 end
