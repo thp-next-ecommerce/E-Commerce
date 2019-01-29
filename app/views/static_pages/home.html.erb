@@ -1,4 +1,23 @@
 <div class="container jumbotron">
   <h1>Welcome to the magic card project</h1>
   <p>Find me in app/views/static_pages/home.html.erb</p>
+
+  <%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: $5.00</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Pack of 5 cards"
+          data-amount="500"
+          data-locale="auto"></script>
+  <% end %>
 </div>
