@@ -1,4 +1,6 @@
 <div class="container jumbotron">
 	<h1><%= @item.name %></h1>
-	<p><%= @item.original_price.to_i %></p>
+	<p>Prix de départ : <%= @item.original_price.to_i %></p>
+	<p>Pourcentage de remise : <%= @item.discounted_percentage %></p>
+	<p>Prix : <%= @item.price %></p>
 </div>

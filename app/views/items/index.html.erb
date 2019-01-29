@@ -6,6 +6,8 @@
     <thead>
       <tr>
         <th>Nom</th>
+        <th>Prix de départ</th>
+        <th>Pourcentage de remise</th>
         <th>Prix</th>
       </tr>
     </thead>
@@ -14,6 +16,8 @@
         <tr>
           <td><a href="items/<%= item.id %>"><%= item.name %></a></td>
           <td><%= item.original_price.to_i %></td>
+          <td><%= item.discounted_percentage %></td>
+          <td><%= item.price %></td>
         </tr>
       <% end %>
     </tbody>
