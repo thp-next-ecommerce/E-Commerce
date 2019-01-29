@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
   devise_for :admins
   devise_for :users
-  root to: 'static_pages#home'
+  root to: 'items#index'
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
+  resources :items, only: %i[index show]
 end
