@@ -2,7 +2,7 @@
 	<h1><%= @item.name %></h1>
 	<p>Prix de départ : <%= @item.original_price.to_i %></p>
 	<p>Pourcentage de remise : <%= @item.discounted_percentage %></p>
-	<p>Prix : <%= @item.price %></p>
+	<p>Prix : <b><%= @item.price %>$</b></p>
 
   <%= form_tag charges_path do %>
   <article>
@@ -11,15 +11,12 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <label class="amount">
-      <span>Amount: $5.00</span>
-    </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Pack of 5 cards"
-          data-amount="500"
+          data-description="Magic payment"
+          data-amount="<%= @item.price * 100 %>"
           data-locale="auto"></script>
   <% end %>
 </div>
