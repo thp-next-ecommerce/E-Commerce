@@ -49,6 +49,7 @@ RSpec.describe OrderItem, type: :model do
     end
 
     it "follows the relational link to itself through `order`" do
+      binding.pry
       expect(order_item.order.order_items.first).to be_truthy
     end
   end
