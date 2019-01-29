@@ -35,3 +35,12 @@ Edition.delete_all
 	)
 	p "edition #{i} : créée"
 end
+
+Item.delete_all
+50.times do |i|
+	Item.create!(
+		name: Faker::Name.unique.name,
+		description: Faker::WorldOfWarcraft.quote
+	)
+	p "item #{i} : créé"
+end
