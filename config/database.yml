@@ -24,6 +24,8 @@ default: &default
   port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
   username: <%= ENV.fetch("POSTGRES_USER", 'postgres') %>
   password: <%= ENV.fetch("POSTGRES_PASSWORD", 'password') %>
+  # uncomment the following line if you are not on Cloud9io
+  template: template0
 
 development:
   <<: *default

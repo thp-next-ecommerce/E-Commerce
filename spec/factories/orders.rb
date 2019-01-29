@@ -21,7 +21,12 @@ FactoryBot.define do
     tax { "9.99" }
     shipping { "9.99" }
     total { "9.99" }
-    order_status
     user
+    #  default status is "In Progress" for a new order
+    order_status_id { 1 }
+
+    trait :with_progress_status do
+      association :order_status, id: 1, name: "In Progress"
+    end
   end
 end

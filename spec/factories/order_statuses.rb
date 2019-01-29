@@ -12,6 +12,23 @@
 
 FactoryBot.define do
   factory :order_status do
-    name { "pending" }
+    # default status is "In Progress"
+    id { 1 }
+    name { "In Progress" }
+
+    trait :placed do
+      id { 2 }
+      name { "Placed" }
+    end
+
+    trait :shipped do
+      id { 3 }
+      name { "Shipped" }
+    end
+
+    trait :cancelled do
+      id { 4 }
+      name { "Cancelled" }
+    end
   end
 end
