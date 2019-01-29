@@ -22,7 +22,7 @@ Admin.delete_all
 5.times do |i|
   Admin.create!(
     email: Faker::Internet.unique.email,
-    password: Faker::Internet.password(6)
+    password: "password"
   )
   p "admin #{i} : créé"
 end
@@ -49,7 +49,7 @@ User.delete_all
 10.times do |i|
   user = User.new(
     email: Faker::Internet.unique.email,
-    password: Faker::Internet.password(8)
+    password: "password"
   )
   user.skip_confirmation!
   user.save
