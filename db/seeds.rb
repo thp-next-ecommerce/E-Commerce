@@ -44,3 +44,14 @@ Item.delete_all
 	)
 	p "item #{i} : créé"
 end
+
+User.delete_all
+10.times do |i|
+	user = User.new(
+		email: Faker::Internet.unique.email, 
+		password: Faker::Internet.password(8)
+	)
+	user.skip_confirmation!
+	user.save
+	p "user #{i} : créé"
+end
