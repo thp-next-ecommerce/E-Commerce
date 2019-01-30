@@ -20,9 +20,13 @@ class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   default_scope { where(active: true) }
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3 }
+  validates :original_price, presence: true, numericality: true, allow_nil: false
+  validates :has_discount, default: false
+  validates :discounted_percentage,
+            numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
 
   def price
-  	has_discount ? (original_price.to_i * (1 - discounted_percentage.to_f / 100)).round(2) : original_price.to_i
+    has_discount ? (original_price.to_i * (1 - discounted_percentage.to_f / 100)).round(2) : original_price.to_i
   end
 end
