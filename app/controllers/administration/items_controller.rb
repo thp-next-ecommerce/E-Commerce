@@ -59,8 +59,8 @@ module Administration
         item.update(item_params)
         item.has_discount = false
       end
-    end      
-    
+    end
+
     def delete_item(item)
       if item.destroy
         flash[:notice] = "Product has been deleted successfuly"
