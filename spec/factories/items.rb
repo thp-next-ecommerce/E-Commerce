@@ -20,7 +20,7 @@ FactoryBot.define do
     name { Faker::WorldOfWarcraft.hero }
     description { Faker::WorldOfWarcraft.quote }
     has_discount { false }
-    original_price { 1.5 }
-    discounted_percentage { 1 }
+    original_price { 100 }
+    discounted_percentage { 50 }
   end
 end
