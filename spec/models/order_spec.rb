@@ -58,12 +58,14 @@ RSpec.describe Order, type: :model do
 
   describe 'method' do
     describe '#subtotal' do
-      let(:order_w_items) { build(:order_w_items) }
+      let(:order_status) { create(:in_progress_status) }
+      let(:order_w_items) { create(:order) }
 
       it "sums all prices of the Order's order_items" do
+        order_status
+        order_w_items.order_items = create_list(:order_item, 5)
         subtotal = order_w_items.order_items.reduce(0) { |sum, item|
-          sum + item.total_price
-        }
+          sum + item.total_price }
         expect(order_w_items.subtotal).to eq subtotal
       end
     end

@@ -24,12 +24,6 @@ FactoryBot.define do
       association :order_status, id: 2, name: "Placed"
     end
 
-    factory :order_w_items do
-      after(:create) do |_order|
-        create_list(:order_item, 5)
-      end
-    end
-
     factory :placed_order, traits: :placed_status
   end
 end
