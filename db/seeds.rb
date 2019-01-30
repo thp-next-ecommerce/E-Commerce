@@ -40,7 +40,8 @@ Item.delete_all
 50.times do |i|
   Item.create!(
     name: Faker::Name.unique.name,
-    description: Faker::WorldOfWarcraft.quote
+    description: Faker::WorldOfWarcraft.quote,
+    original_price: Faker::Number.between(1, 9)
   )
   p "item #{i} : créé"
 end
