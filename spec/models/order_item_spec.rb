@@ -32,7 +32,13 @@ RSpec.describe OrderItem, type: :model do
     end
 
     describe "association" do
+      let(:order_status) { create(:in_progress_status) }
       let(:order_item) { create(:order_item) }
+
+      # Bug: need to refresh variable to make order_status accessible
+      before do
+        order_status
+      end
 
       it { is_expected.to belong_to(:item) }
       it { is_expected.to belong_to(:order) }
@@ -58,8 +64,14 @@ RSpec.describe OrderItem, type: :model do
   end
 
   describe "model method" do
+    let(:order_status) { create(:in_progress_status) }
     let(:item) { build(:item) }
     let(:o_i) { build(:order_item, item: item) }
+
+    # Bug: need to refresh variable to make order_status accessible
+    before do
+      order_status
+    end
 
     describe "#unit_price" do
       it "returns the same price as Item#price" do

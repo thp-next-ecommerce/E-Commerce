@@ -22,7 +22,7 @@ RSpec.describe OrderStatus, type: :model do
   end
 
   describe "associations" do
-    let(:order_status) { build(:order_status) }
+    let(:order_status) { create(:in_progress_status) }
     let(:order) { create(:order) }
 
     it { is_expected.to have_many(:orders) }

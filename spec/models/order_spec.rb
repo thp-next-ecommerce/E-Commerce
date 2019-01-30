@@ -30,7 +30,13 @@ RSpec.describe Order, type: :model do
     end
 
     describe 'association' do
+      let(:order_status) { create(:in_progress_status) }
       let(:created_order) { create(:order) }
+
+      # Bug: need to refresh variable to make order_status accessible
+      before do
+        order_status
+      end
 
       it { is_expected.to belong_to(:order_status) }
       it { is_expected.to belong_to(:user) }
@@ -52,7 +58,14 @@ RSpec.describe Order, type: :model do
 
   describe 'method' do
     describe '#subtotal' do
-      skip
+      let(:order_w_items) { build(:order_w_items) }
+
+      it "sums all prices of the Order's order_items" do
+        subtotal = order_w_items.order_items.reduce(0) { |sum, item|
+          sum + item.total_price
+        }
+        expect(order_w_items.subtotal).to eq subtotal
+      end
     end
   end
 end
