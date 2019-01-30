@@ -36,9 +36,6 @@ RSpec.describe Order, type: :model do
       it { is_expected.to belong_to(:user) }
       it { is_expected.to have_many(:order_items) }
 
-      # let(:progress_status) { create(:order_status, :in_progress) }
-      # let(:created_order) { create(:order, order_status: progress_status) }
-
       it 'follows a relational link through order_status model up to itself' do
         expect(created_order.order_status.orders.first).to be_truthy
       end

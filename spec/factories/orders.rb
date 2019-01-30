@@ -25,8 +25,8 @@ FactoryBot.define do
     #  default status is "In Progress" for a new order
     order_status
 
-    trait :with_progress_status do
-      association :order_status, id: 1, name: "In Progress"
+    trait :with_placed_status do
+      association :order_status, id: 2, name: "Placed"
     end
   end
 end

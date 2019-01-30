@@ -31,6 +31,7 @@ RSpec.describe OrderItem, type: :model do
   end
 
   describe "associations" do
+    # let(:order) { create(:order)}
     let(:order_item) { create(:order_item) }
 
     it { is_expected.to belong_to(:item) }
@@ -49,7 +50,7 @@ RSpec.describe OrderItem, type: :model do
     end
 
     it "follows the relational link to itself through `order`" do
-      binding.pry
+      # order_item.order.order_items << order_item
       expect(order_item.order.order_items.first).to be_truthy
     end
   end
