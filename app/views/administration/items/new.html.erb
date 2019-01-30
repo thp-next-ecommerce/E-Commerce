@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Ajouter un produit</h1>
+
+  <%= form_for @item, url: administration_items_path(@item) do |f| %>
+  <p><%= f.label 'Nom produit' %></p>
+  <p><%= f.text_field :name, autofocus: true %><p>
+  <p><%= f.label 'description produit' %></p>
+  <p><%= f.text_field :description %><p>
+  <p><%= f.label 'Prix de base' %></p>
+  <p><%= f.number_field :original_price %><p>
+  <p><%= f.label 'Remise sur produit en %' %></p>
+  <p><%= f.number_field :discounted_percentage, value: 0 %><p>
+  <p><%= f.label 'Status produit' %></p>
+  <p><%= f.text_field :active %><p>
+  <p><%= f.submit 'Mettre à jour' %></p>
+  <% end -%>
+</div>
