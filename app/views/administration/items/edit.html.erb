@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Modification produit <%= @item.name %></h1>
+
+  <%= form_for @item, url: administration_item_path(@item), method: :patch  do |f| %>
+  <p><%= f.label 'Nom produit' %></p>
+  <p><%= f.text_field(:name, value: @item.name) %><p>
+  <p><%= f.label 'description produit' %></p>
+  <p><%= f.text_field(:description, value: @item.description) %><p>
+  <p><%= f.label 'Prix de base' %></p>
+  <p><%= f.number_field(:original_price, value: @item.original_price) %><p>
+  <p><%= f.label 'Remise sur produit' %></p>
+  <p><%= f.number_field(:discounted_percentage, value: @item.discounted_percentage) %><p>
+  <p><%= f.label 'Status produit' %></p>
+  <p><%= f.text_field(:active, value: @item.active) %><p>
+  <p><%= f.submit 'Mettre à jour' %></p>
+  <% end -%>
+</div>
