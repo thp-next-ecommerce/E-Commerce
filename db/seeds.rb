@@ -41,7 +41,8 @@ Item.delete_all
   Item.create!(
     name: Faker::Name.unique.name,
     description: Faker::WorldOfWarcraft.quote,
-    original_price: Faker::Number.between(1, 9)
+    original_price: Faker::Number.between(1, 100),
+    discounted_percentage: 0
   )
   p "item #{i} : créé"
 end
