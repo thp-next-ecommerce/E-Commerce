@@ -23,7 +23,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject(:new_user) { described_class.new }
 
-  let(:user) { build_stubbed(:user) }
+  let(:user) { create(:user) }
 
   describe 'Database' do
     it { is_expected.to have_db_column(:email).of_type(:string).with_options(default: '', null: false) }
@@ -49,6 +49,13 @@ RSpec.describe User, type: :model do
   end
 
   describe 'unit test validation' do
+    it 'is creatable' do
+      expect(user.id).not_to be_nil
+    end
+    it 'is confirmable' do
+      user.confirm
+      expect(user.confirmed_at).not_to be_nil
+    end
     it 'is valid with valid attibutes' do
       expect(user).to be_valid
     end
