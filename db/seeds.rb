@@ -57,3 +57,9 @@ User.delete_all
   user.save
   p "user #{i} : créé"
 end
+
+OrderStatus.delete_all
+OrderStatus.create! id: 1, name: "En cours"
+OrderStatus.create! id: 2, name: "Confirmé"
+OrderStatus.create! id: 3, name: "Envoyé"
+OrderStatus.create! id: 4, name: "Annulé"

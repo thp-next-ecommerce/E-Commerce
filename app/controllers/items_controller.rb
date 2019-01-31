@@ -2,7 +2,7 @@
 
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.active
     @order_items = current_order.order_items.new
   end
 
