@@ -1,0 +1,15 @@
+<% @orders.each do |order| %>
+  <%= form_for order, url: administration_order_path(order), method: :patch do |f|%>
+  <tr>
+    <td><%= order.id %></td>
+    <td><%= order.updated_at %></td>
+    <td><%= order.subtotal.to_f %></td>
+    <td><%= order.tax.to_f %></td>
+    <td><%= order.total.to_f %></td>
+    <td><%= order.user.email %></td>
+    <td><%= f.select(:order_status_id, options_for_select( OrderStatus.pluck(:name, :id))) %></td>
+    <td><%= f.submit 'Mettre à jour', class: 'btn btn-primary' %></td>
+    <td><%= link_to 'Visualiser', administration_order_path(order), class: 'btn btn-info' %></td>
+  </tr>
+  <% end %>
+<% end %>  
