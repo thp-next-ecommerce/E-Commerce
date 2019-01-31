@@ -64,8 +64,7 @@ RSpec.describe Order, type: :model do
       it "sums all prices of the Order's order_items" do
         order_status
         order_w_items.order_items = create_list(:order_item, 5)
-        subtotal = order_w_items.order_items.reduce(0) { |sum, item|
-          sum + item.total_price }
+        subtotal = order_w_items.order_items.reduce(0) { |sum, item| sum + item.total_price }
         expect(order_w_items.subtotal).to eq subtotal
       end
     end
