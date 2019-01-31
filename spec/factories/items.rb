@@ -17,10 +17,10 @@
 
 FactoryBot.define do
   factory :item do
-    name { "MyString" }
-    description { "MyText" }
+    name { Faker::WorldOfWarcraft.hero }
+    description { Faker::WorldOfWarcraft.quote }
     has_discount { false }
-    original_price { 100 }
-    discounted_percentage { 50 }
+    original_price { Faker::Number.between(1, 50) }
+    discounted_percentage { Faker::Number.between(1, 80) }
   end
 end
