@@ -15,13 +15,15 @@
 #  user_id         :bigint(8)
 #
 
+#  An in_progress_status factory must be created before any Order is created
 FactoryBot.define do
   factory :order do
-    subtotal { "9.99" }
-    tax { "9.99" }
-    shipping { "9.99" }
-    total { "9.99" }
-    order_status
     user
+
+    trait :placed_status do
+      association :order_status, id: 2, name: "Placed"
+    end
+
+    factory :placed_order, traits: :placed_status
   end
 end

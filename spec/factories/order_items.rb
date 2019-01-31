@@ -16,10 +16,8 @@
 
 FactoryBot.define do
   factory :order_item do
-    item
     order
-    unit_price { "9.99" }
+    item
     quantity { 1 }
-    total_price { "9.99" }
   end
 end
