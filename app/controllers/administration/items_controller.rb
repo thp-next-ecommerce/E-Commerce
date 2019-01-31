@@ -45,7 +45,7 @@ module Administration
     def item_valid?(item)
       if item.valid?
         item.save
-        flash[:notice] = "Produuit mis à jour"
+        flash[:notice] = "Produit mis à jour"
       else
         flash[:alert] = item.errors.full_messages
       end

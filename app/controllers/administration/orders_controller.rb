@@ -3,7 +3,7 @@
 module Administration
   class OrdersController < AdministrationController
     def index
-      @orders = Order.sorted_by_date
+      @orders = Order.all
     end
 
     def show
@@ -26,12 +26,14 @@ module Administration
     end
 
     def update_order(order)
-      if order.valid?
-        order.save
+      result = order.update(order_params)
+      if result
+        order.update(order_params)
         flash[:notice] = "Commande mise à jour"
-        redirect_to administration_orders_path
       else
         flash[:alert] = order.errors.full_messages
+      end
+      redirect_to administration_orders_path
     end
   end
 end
