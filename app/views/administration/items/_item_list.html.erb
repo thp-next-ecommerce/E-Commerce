@@ -1,0 +1,17 @@
+<% @items.each do |item| %>
+  <%= form_for item, url: administration_item_path(item), method: :patch  do |f| %>
+  <tr>
+    <td><%= item.id %></td>
+    <td><%= item.name %></td>
+    <td><%= item.description %></td>
+    <td><%= item.original_price.to_f %></td>
+    <td><%= f.text_field(:discounted_percentage, value: item.discounted_percentage) %></td>
+    <td><%= item.price %></td>
+    <td><%= item.active %></td>
+    <td><%= f.submit 'Mettre à jour', class: "btn btn-primary" %></td>
+    <td><%= link_to 'Modifier', edit_administration_item_path(item), class: "btn btn-info" %></td>
+    <td><%= link_to 'Supprimer', administration_item_path(item), method: :delete, confirm: "Are you sure ?", class: "btn btn-danger" %>
+  </tr>
+  <% end %>
+<% end %>
+

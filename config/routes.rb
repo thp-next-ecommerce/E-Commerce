@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   resources :charges
   resources :items, only: %i[index show]
+
+  namespace 'administration' do
+    get 'admin', to: 'items#index'
+    resources :items
+    resources :orders
+  end
 end
