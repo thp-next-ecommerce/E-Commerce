@@ -1,0 +1,35 @@
+<footer>
+	<div class="row">
+		<div class="col-lg-3 col-md-6 col-xs-12">
+			<p class="footer-title">Magic Project<br> © 2019</p>
+		</div>
+		<div class="col-lg-3 col-md-6 col-xs-12">
+			<p class="footer-title">blablabla</p>
+				<ul>
+					<li><a class="footer-text" href="#">blablablablabla</a></li>
+					<li><a class="footer-text" href="#">blablablablabla</a></li>
+					<li><a class="footer-text" href="#">blablablablabla</a></li>
+				</ul>
+		</div>
+		<div class="col-lg-3 col-md-6 col-xs-12">
+			<p class="footer-title">blablabla</p>
+				<ul>
+					<li><a class="footer-text" href="#">blablablablabla</a></li>
+					<li><a class="footer-text" href="#">blablablablabla</a></li>
+					<li><a class="footer-text" href="#">blablablablabla</a></li>
+				</ul>
+		</div>
+		<div class="col-lg-3 col-md-6 col-xs-12">
+			<p class="footer-title">Admin</p>
+				<ul>
+					<% if admin_signed_in? %>
+						<li><%= link_to "Espace d'administration", administration_admin_path, :class => "footer-text" %></li>
+						<li><%= link_to "Se déconnecter", destroy_admin_session_path, method: :delete, :class => "footer-text" %></li>
+					<% else %>
+						<li><%= link_to "S'inscrire", new_admin_registration_path, :class => "footer-text" %></li>
+						<li><%= link_to "Se connecter", admin_session_path, :class => "footer-text" %></li>
+					<% end %>
+				</ul>
+		</div>
+	</div>
+</footer>
