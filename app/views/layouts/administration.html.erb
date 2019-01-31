@@ -5,26 +5,29 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'administration', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="wrapper">
       <div class="d-flex">
-    
-        <div class="main">
-      
-          <%= render "layouts/shared/flash_messages" %>
+        
+        <%= render "layouts/template/sidebar" %>
 
+        <div class="main">
+
+          <%= render "layouts/template/navbar" %>
+          
+          <%= render "layouts/shared/flash_messages" %>
+          
           <main class="content">
             <div class="container-fluid p-0">
               <%= yield %>
             </div>
           </main>
-
+        
         </div>
-
       </div>
     </div>
   </body>

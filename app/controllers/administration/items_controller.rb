@@ -52,23 +52,17 @@ module Administration
     end
 
     def update_item(item)
-      if params[:item][:discount_percentage] != 0
-        item.update(item_params)
-        item.has_discount = true
-      else
-        item.update(item_params)
-        item.has_discount = false
-      end
+      item.update(item_params)
+      item.has_discount = params[:item][:discount_percentage] != 0
     end
 
     def delete_item(item)
       if item.destroy
         flash[:notice] = "Product has been deleted successfuly"
-        redirect_to administration_items_path
       else
         flash[:alert] = item.erros.full_messages
-        redirect_to administration_items_path
       end
+      redirect_to administration_items_path
     end
   end
 end
