@@ -18,6 +18,6 @@ FactoryBot.define do
   factory :order_item do
     order
     item
-    quantity { 1 }
+    quantity { Faker::Number.between(1, 9) }
   end
 end
