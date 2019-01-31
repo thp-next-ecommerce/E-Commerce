@@ -7,7 +7,7 @@
     <td><%= order.tax.to_f %></td>
     <td><%= order.total.to_f %></td>
     <td><%= order.user.email %></td>
-    <td><%= f.select(:order_status_id, options_for_select( OrderStatus.pluck(:name, :id))) %></td>
+    <td><%= f.select(:order_status_id, options_for_select( OrderStatus.pluck(:name, :id), [order.order_status.name, order.order_status_id])) %></td>
     <td><%= f.submit 'Mettre à jour', class: 'btn btn-primary' %></td>
     <td><%= link_to 'Visualiser', administration_order_path(order), class: 'btn btn-info' %></td>
   </tr>
