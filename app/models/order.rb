@@ -20,5 +20,5 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :user
 
-  default_scope { order({updated_at: :desc}, :order_status_id) }
+  default_scope { order({ updated_at: :desc }, :order_status_id) }
 end
