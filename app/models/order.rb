@@ -20,5 +20,5 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :user
 
-  scope: sorted_by_date, lambda { order("updated_at DESC") }
+  scope :sorted_by_date, lambda { order("updated_at DESC") }
 end
