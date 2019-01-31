@@ -1,22 +1,18 @@
-<div class="">
-  <br>
-  <h1 class="text-center">Bienvenue à Magic Project</h1>
-  <br><br>
+<h1 class="text-center">Bienvenue à Magic Project</h1>
+<br><br>
 
-  <div class="card-columns">
-    <% @items.each do |item| %>
-      <div class="card">
-        <img class="card-img-top" src="https://via.placeholder.com/100x140" alt="<%= item.name %>">
-        <div class="card-body">
-          <h5 class="card-title"><a href="items/<%= item.id %>"><%= item.name %></a></h5>
-          <p class="card-text"><%= item.description %></p>
-          <span class="card-text"><%= item.original_price.to_i %></span>
-          <span class="card-text"><%= item.discounted_percentage %></span>
-          <span class="card-text"><%= item.price %></span>
-        </div>
+<div class="row">
+  <% @items.each do |item| %>
+    <div class="card col-lg-3 col-md-6 col-xs-12">
+      <a href="items/<%= item.id %>">
+      <img class="card-img-top" src="https://via.placeholder.com/300" alt="<%= item.name %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= item.name %></a></h5>
+        <p class="card-text"><%= item.description %></p>
+        <p class="card-text">Prix avant réduction : <%= item.original_price.to_i %>€</p>
+        <p class="card-text"><%= item.discounted_percentage %></p>
+        <p class="card-text">Prix après réduction : <%= item.price %>€</p>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
-
-<!-- https://via.placeholder.com/150 -->
