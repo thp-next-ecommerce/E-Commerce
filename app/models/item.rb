@@ -25,7 +25,7 @@ class Item < ApplicationRecord
   validates :discounted_percentage,
             numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
 
-  default_scope { where(active: true) }
+  scope :active, lambda { where(active: true) }
   scope :sorted_by_price, -> { order("original_price ASC") }
   scope :sorted_by_name, lambda { order("name ASC") }
   scope :newest_first, lambda { order("created_at DESC") }
