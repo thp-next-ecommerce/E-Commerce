@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   # Shop
   resources :charges
   resources :items, only: %i[index show]
-  resources :baskets, only: [:show]
+  resource :baskets, only: [:show]
   resources :order_items, only: %i[create update destroy]
 end
