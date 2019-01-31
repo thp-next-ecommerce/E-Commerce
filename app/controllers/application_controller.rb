@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
 
   def current_order
     Order.find(session[:order_id]) unless session[:order_id].nil?
-
     Order.new
+  end
+
+  protected
+
+  def after_sign_in_path_for(_admins)
+    administration_admin_path
   end
 end
