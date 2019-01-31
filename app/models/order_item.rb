@@ -14,8 +14,40 @@
 #  updated_at  :datetime         not null
 #
 
+#  An OrderItem totalizes the price and quantity for one Item. It will be used
+#  in an Order
 class OrderItem < ApplicationRecord
   belongs_to :item
   belongs_to :order
+
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validate :item_present?
+  validate :order_present?
+
+  before_save :finalize
+
+  def unit_price
+    return self[:unit_price] if persisted?
+
+    item.price
+  end
+
+  def total_price
+    unit_price * quantity
+  end
+
+  private
+
+  def item_present?
+    errors.add(:item, "is not valid or inactive") if item.nil?
+  end
+
+  def order_present?
+    errors.add(:order, "is not a valid order") if order.nil?
+  end
+
+  def finalize
+    self[:unit_price] = unit_price
+    self[:total_price] = quantity * self[:unit_price]
+  end
 end
