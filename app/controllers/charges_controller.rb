@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ChargesController < ApplicationController
-  before_action :authenticate_user!
-
   def new; end
 
   def create
@@ -17,7 +15,7 @@ class ChargesController < ApplicationController
 
     Stripe::Charge.create(
       customer: customer.id,
-      amount: @amount,
+      amount: @amount.to_i,
       description: 'Magic payment',
       currency: 'eur'
     )
