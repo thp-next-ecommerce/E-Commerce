@@ -29,10 +29,10 @@ gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
+  gem 'guard-rspec', require: false
   gem 'pry-byebug', '~> 3.6'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'sandi_meter', '~> 1.2'
-  gem 'guard-rspec', require: false
 end
 
 group :development do
