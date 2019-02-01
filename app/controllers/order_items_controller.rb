@@ -3,9 +3,13 @@
 class OrderItemsController < ApplicationController
   def create
     @order = current_order
+    puts @order
     @order_item = @order.order_items.new(order_item_params)
+    puts order_item_params
+    puts @order_item
     @order.save
     session[:order_id] = @order.id
+    puts session
   end
 
   def update
