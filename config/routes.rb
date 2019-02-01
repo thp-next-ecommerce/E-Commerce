@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   # Base
   devise_for :admins
   devise_for :users
+  authenticated :admin do
+    root 'administration/items#index', as: :admin_root
+  end
   root to: 'items#index'
-
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
 
