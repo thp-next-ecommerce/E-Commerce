@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def current_order
     Order.find(session[:order_id]) unless session[:order_id].nil?
-
     Order.new
   end
 end
