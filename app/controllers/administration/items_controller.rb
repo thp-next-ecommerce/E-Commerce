@@ -39,13 +39,13 @@ module Administration
     private
 
     def item_params
-      params.require(:item).permit(:name, :discounted_percentage, :original_price, :active, :description )
+      params.require(:item).permit(:name, :discounted_percentage, :original_price, :active, :description)
     end
 
     def item_valid?(item)
       if item.valid?
         item.save
-        flash[:notice] = "Product updated successfuly"
+        flash[:notice] = "Produit mis à jour"
       else
         flash[:alert] = item.errors.full_messages
       end
@@ -62,7 +62,6 @@ module Administration
       else
         flash[:alert] = item.erros.full_messages
       end
-
       redirect_to administration_items_path
     end
   end

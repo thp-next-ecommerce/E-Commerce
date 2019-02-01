@@ -1,0 +1,27 @@
+footer {
+	margin: 5% 0 0 0;
+	padding: 3% 8% 3% 8%;
+	background: #e0e0e0;
+	background: -webkit-linear-gradient(to right, #fff, #e0e0e0);
+	background: linear-gradient(to right, #fff, #e0e0e0);
+}
+
+.footer-title {
+	color: #007bff;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.footer-text {
+	text-decoration: none;
+	color: black;
+}
+
+footer ul {
+	list-style: none;
+}
+
+.footer-text:hover {
+	text-decoration: none;
+	color: #007bff;
+}

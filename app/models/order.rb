@@ -20,6 +20,8 @@
 # It acts as a basket that is editable as long as the Order.new has not been #save
 class Order < ApplicationRecord
   belongs_to :user
+
+  default_scope { order({ updated_at: :desc }, :order_status_id) }
   belongs_to :order_status
   has_many :order_items, dependent: :nullify
 
