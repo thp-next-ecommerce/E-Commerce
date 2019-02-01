@@ -15,7 +15,7 @@ RSpec.describe OrderItemsController, type: :controller do
   end
 
   describe "POST #create" do
-    it "returns http success" do
+    it "returns http success with 'order_item[quantity]' and 'order_item_id' in params" do
       post :create, params: params
       expect(response).to have_http_status(:success)
     end
