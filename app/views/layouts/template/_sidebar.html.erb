@@ -25,7 +25,14 @@
                 <ul id="produits" class="sidebar-dropdown list-unstyled collapse ">
                     <li class="sidebar-item"><a class="sidebar-link" href="/administration/items">Les items</a></li>
                     <li class="sidebar-item"><a class="sidebar-link" href="/administration/items/new">Ajouter un item</a></li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="/administration/orders">Les commandes <span class="sidebar-badge badge badge-primary"><%= Order.all.count %></span></a></li>
+                </ul>
+            </li>
+            <li class="sidebar-item">
+                <a href="#commandes" data-toggle="collapse" class="sidebar-link collapsed">
+                    <span class="align-middle">Commandes</span> <span class="sidebar-badge badge badge-primary"><%= Order.all.count %></span>
+                </a>
+                <ul id="commandes" class="sidebar-dropdown list-unstyled collapse ">
+                    <li class="sidebar-item"><a class="sidebar-link" href="/administration/orders">Les commandes <span class="sidebar-badge badge badge-secondary"><%= Order.all.count %></span></a></li>
                 </ul>
             </li>
         </ul>
