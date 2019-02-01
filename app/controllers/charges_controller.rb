@@ -6,9 +6,9 @@ class ChargesController < ApplicationController
   def new; end
 
   def create
-    @item = Item.find(params[:id])
+    @order = Order.find(params[:id])
     # Amount in cents
-    @amount = @item.price * 100
+    @amount = @order.subtotal * 100
 
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],

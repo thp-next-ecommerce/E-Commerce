@@ -1,0 +1,5 @@
+<% if @order.errors.any? || @order_item.errors.any? %>
+alert("not valid.")
+<% else %>
+  $(".basket-text").html("<%= j(render 'layouts/basket_text') %>")
+<% end %>
