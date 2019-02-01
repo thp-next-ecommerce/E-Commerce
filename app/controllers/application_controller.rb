@@ -7,10 +7,4 @@ class ApplicationController < ActionController::Base
     Order.find(session[:order_id]) unless session[:order_id].nil?
     Order.new
   end
-
-  protected
-
-  def after_sign_in_path_for(_admins)
-    administration_admin_path
-  end
 end
