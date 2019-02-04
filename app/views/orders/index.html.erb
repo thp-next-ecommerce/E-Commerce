@@ -1,5 +1,6 @@
 <div class="container">
 <h2>Voici l'historique de vos commandes passées : </h2>
+  <% if @order %>
   <table class="table table-sm table-striped table-bordered .table-responsive{-sm|-md|-lg|-xl}">
     <thead class="table-info">
       <tr>
@@ -22,4 +23,10 @@
       <% end %>
     </tbody>
   </table>
+  <% else %>
+  <div class="container">
+    <p> Oups pas de commande </p>
+    <p><%= link_to 'Voir la liste des produits',  root_path, class: 'btn btn-info' %> </p>
+  </div>
+  <% end %>
 </div>
