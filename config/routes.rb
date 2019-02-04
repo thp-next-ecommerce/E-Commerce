@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resource :basket, only: [:show]
   resources :order_items, only: %i[create update destroy]
   # User order
-  resources :users, only: %i[index show edit] do
+  resources :users, only: %i[show] do
     resources :orders, only: %i[index show]
   end
 end
