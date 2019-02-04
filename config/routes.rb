@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get 'admin', to: 'items#index'
     resources :items
     resources :orders
+    resources :admins
+    resources :users
   end
 
   # Base
