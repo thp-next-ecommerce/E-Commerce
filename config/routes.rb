@@ -29,4 +29,8 @@ Rails.application.routes.draw do
   resources :items, only: %i[index show]
   resource :basket, only: [:show]
   resources :order_items, only: %i[create update destroy]
+  # User order
+  resources :users, only: %i[index show edit] do
+    resources :orders, only: %i[index show ]
+  end
 end
