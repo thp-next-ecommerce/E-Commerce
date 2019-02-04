@@ -19,6 +19,7 @@ class ChargesController < ApplicationController
       description: 'Magic payment',
       currency: 'eur'
     )
+    redirect_to controller: 'orders', action: 'close'
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to charges_path
