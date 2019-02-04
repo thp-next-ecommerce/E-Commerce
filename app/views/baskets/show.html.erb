@@ -1,7 +1,12 @@
 <div class="shopping-basket">
   <%= render "shopping_basket" %>
 </div>
+<center>
+	<br>
+	<h4>Total du panier : <%= current_order.subtotal %>€</h4>
+	<br>
 
-<div id="stripe-button">
-  <%= render  "stripe_pay_button" %>
-</div>
+	<div id="stripe-button">
+	  <%= render  "stripe_pay_button" %>
+	</div>
+</center>
