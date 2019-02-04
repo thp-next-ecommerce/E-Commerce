@@ -1,0 +1,25 @@
+<div class="container">
+<h2>Voici l'historique de vos commandes passées : </h2>
+  <table class="table table-sm table-striped table-bordered .table-responsive{-sm|-md|-lg|-xl}">
+    <thead class="table-info">
+      <tr>
+        <th scope="col">Numéro de commande</th>
+        <th scope="col">Date de commande</th>
+        <th scope="col">Total</th>
+        <th scope="col">Status</th>
+         <th scope="col">Détails</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <th scope="row"><%= order.id %></th>
+        <td><%= order.updated_at.strftime("%d-%m-%Y") %></td>
+        <td><%= number_to_currency(order.subtotal, unit: "€", delimiter: "", format: "%n %u") %></td>
+        <td><%= order.order_status.name %></td>
+        <td><%= link_to 'Détails commande', user_order_path(@user, order), class: "btn btn-info"%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
