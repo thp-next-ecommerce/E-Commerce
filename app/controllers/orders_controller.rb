@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
@@ -6,6 +8,6 @@ class OrdersController < ApplicationController
 
   def index
     @user = current_user
-    @orders = Order.where(user_id: @user.id)
+    @orders = Order.order_user.where(user_id: @user.id)
   end
 end
