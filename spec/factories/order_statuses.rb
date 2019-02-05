@@ -15,22 +15,22 @@ FactoryBot.define do
     # default status is "In Progress"
     trait :in_progress do
       id { 1 }
-      name { "In Progress" }
+      name { "En cours" }
     end
 
     trait :placed do
       id { 2 }
-      name { "Placed" }
+      name { "Confirmé" }
     end
 
     trait :shipped do
       id { 3 }
-      name { "Shipped" }
+      name { "Envoyé" }
     end
 
     trait :cancelled do
       id { 4 }
-      name { "Cancelled" }
+      name { "Annulé" }
     end
 
     factory :in_progress_status, traits: [:in_progress]
