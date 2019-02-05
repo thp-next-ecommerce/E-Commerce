@@ -6,6 +6,11 @@ class OrdersController < ApplicationController
   def show; end
 
   def close
-    @order = current_order
+    @order = Order.find(params[:id])
+    puts @order.order_status_id
+    @order.order_status_id = 2
+    @order.save
+    puts @order.order_status_id
+    session[:order_id] = nil
   end
 end

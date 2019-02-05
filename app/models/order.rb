@@ -24,8 +24,9 @@ class Order < ApplicationRecord
   default_scope { order({ updated_at: :desc }, :order_status_id) }
   belongs_to :order_status
   has_many :order_items, dependent: :nullify
-
-  before_validation :set_order_status
+  
+  before_validation :set_order_status,
+    if: Proc.new { |order| order.new_record? }
   before_save :update_subtotal
 
   def subtotal

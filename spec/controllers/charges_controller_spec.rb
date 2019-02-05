@@ -11,17 +11,15 @@ RSpec.describe ChargesController, type: :controller do
 
     let(:customer) { instance_double("Stripe::Customer.create") }
 
-    before do
-      order_status
-    end
-
     context "when the Stripe charge has been created," do
-      it "redirects to orders#close" do
+      before do
+        order_status
         allow(Stripe::Customer).to receive(:create).and_return(customer)
         allow(customer).to receive(:id)
         allow(Stripe::Charge).to receive(:create)
-        expect(create_charge).to have_http_status(:redirect)
       end
+      
+      it { is_expected.to redirect_to(close_order_path(order.id)) }
     end
   end
 end
