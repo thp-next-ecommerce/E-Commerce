@@ -7,13 +7,11 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   namespace 'administration' do
-    get 'admin', to: 'items#index'
     resources :items
     resources :orders
     resources :admins
     resources :users
   end
-
   # Base
   devise_for :admins
   devise_for :users
@@ -23,10 +21,13 @@ Rails.application.routes.draw do
   root to: 'items#index'
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
-
   # Shop
   resources :charges, only: %i[new create]
   resources :items, only: %i[index show]
   resource :basket, only: [:show]
   resources :order_items, only: %i[create update destroy]
+  # User order
+  resources :users, only: %i[show] do
+    resources :orders, only: %i[index show]
+  end
 end
