@@ -1,1 +1,1 @@
-<%= link_to "#{current_order.order_items.size} Items in Basket ( #{number_to_currency current_order.subtotal} )", basket_path, class: "btn btn-link text-white" %>
+<%= link_to "#{current_order.order_items.size} Produit(s) au panier ( #{current_order.subtotal}€ )", basket_path, class: "btn btn-link text-white" %>

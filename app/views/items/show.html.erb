@@ -1,18 +1,16 @@
 <div class="container jumbotron">
 	<h1><%= @item.name %></h1>
-	<p>Prix de départ : <%= @item.original_price.to_i %></p>
+  <br>
+	<p>Prix de départ : <%= @item.original_price.to_i %>€</p>
 	<p>Pourcentage de remise : <%= @item.discounted_percentage %></p>
-  <p>Prix : <b><%= @item.price %>$</b></p>
+  <p>Prix : <b><%= @item.price %>€</b></p>
+  <br>
 
   <%= form_for @order_item, remote: true do |f| %>
-  <h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency @item.price %></span></h4>
     <div class="input-group">
       <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-      <div class="input-group-btn">
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.submit "Add to Cart", class: "btn btn-primary" %>
-      </div>
+      <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.submit "Ajouter au panier", class: "btn btn-primary" %>
     </div>
   <% end %>
-
 </div>
