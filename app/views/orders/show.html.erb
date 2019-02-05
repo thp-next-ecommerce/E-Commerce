@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Détails de votre commande <%= @order.id %></h2>
+  <table class="table table-sm table-striped table-bordered .table-responsive{-sm|-md|-lg|-xl}">
+    <thead class="table-info">
+      <tr>
+        <th scope="col">Référence produit</th>
+        <th scope="col">Nom produit</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix de vente</th>
+         <th scope="col">Total </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @order_items.each do |order_items| %>
+      <tr>
+        <th><%= order_items.item_id %></th>
+        <td><%= order_items.item.name %></td>
+        <td><%= order_items.quantity %></td>
+        <td><%= number_to_currency(order_items.unit_price, unit: "€", delimiter: "", format: "%n %u") %></td>
+        <td><%= number_to_currency(order_items.total_price, unit: "€", delimiter: "", format: "%n %u") %></td>
+      </tr>
+      <% end %>
+      <tr class="bold">
+        <th></th>
+        <td></td>
+        <td></td>
+        <td>Total :</td>
+        <td><%= number_to_currency(@order.subtotal, unit: "€", delimiter: "", format: "%n %u") %></td>
+      </tr>
+    </tbody>
+  </table>
+  <p><%= link_to 'Retour à la list', user_orders_path, class: "btn btn-info" %></p>
+</div>
