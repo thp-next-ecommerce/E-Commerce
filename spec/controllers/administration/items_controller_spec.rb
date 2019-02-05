@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Administration::ItemsController, type: :controller do
   let(:item) { create(:item) }
+
   describe '.delete_item' do
     it 'gets alert' do
       skip
