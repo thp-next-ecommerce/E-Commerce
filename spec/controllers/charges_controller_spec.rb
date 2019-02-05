@@ -18,7 +18,7 @@ RSpec.describe ChargesController, type: :controller do
         allow(customer).to receive(:id)
         allow(Stripe::Charge).to receive(:create)
       end
-      
+
       it { is_expected.to redirect_to(close_order_path(order.id)) }
     end
   end

@@ -2,7 +2,7 @@
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @user = current_user
     @orders = Order.order_user.where(user_id: @user.id)

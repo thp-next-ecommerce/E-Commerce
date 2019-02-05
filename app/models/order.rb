@@ -25,9 +25,9 @@ class Order < ApplicationRecord
   scope :order_user, lambda { where(order_status: [2, 3, 4]) }
   belongs_to :order_status
   has_many :order_items, dependent: :nullify
-  
+
   before_validation :set_order_status,
-    if: Proc.new { |order| order.new_record? }
+                    if: proc { |order| order.new_record? }
   before_save :update_subtotal
 
   def subtotal
