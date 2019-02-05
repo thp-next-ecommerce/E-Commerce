@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe OrdersController, type: :controller do
+  let(:order_status) { create(:in_progress_status) }
+  let(:order) { create(:order) }
+
   describe "GET #index" do
     it "returns http success" do
       get :index
@@ -12,14 +15,16 @@ RSpec.describe OrdersController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+      order_status
+      get :show, params: { id: order.id }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #close" do
     it "returns http success" do
-      get :close
+      order_status
+      get :close, params: { id: order.id }
       expect(response).to have_http_status(:success)
     end
   end
