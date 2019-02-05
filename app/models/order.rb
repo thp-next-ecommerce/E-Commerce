@@ -22,6 +22,7 @@ class Order < ApplicationRecord
   belongs_to :user
 
   default_scope { order({ updated_at: :desc }, :order_status_id) }
+  scope :order_user, lambda { where(order_status: [2, 3, 4]) }
   belongs_to :order_status
   has_many :order_items, dependent: :nullify
 

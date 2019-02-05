@@ -23,7 +23,7 @@
 			<p class="footer-title">Admin</p>
 				<ul>
 					<% if admin_signed_in? %>
-						<li><%= link_to "Espace d'administration", administration_admin_path, :class => "footer-text" %></li>
+						<li><%= link_to "Espace d'administration", admin_root_path, :class => "footer-text" %></li>
 						<li><%= link_to "Se déconnecter", destroy_admin_session_path, method: :delete, :class => "footer-text" %></li>
 					<% else %>
 						<li><%= link_to "S'inscrire", new_admin_registration_path, :class => "footer-text" %></li>
