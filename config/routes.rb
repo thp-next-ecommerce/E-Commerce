@@ -7,10 +7,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   namespace 'administration' do
-    resources :items
-    resources :orders
-    resources :admins
-    resources :users
+    resources :items, :orders, :admins, :users
   end
   # Base
   devise_for :admins
