@@ -54,13 +54,8 @@ module Administration
     end
 
     def update_item(item)
-      if params[:item][:discount_percentage] != 0
-        item.update(item_params)
-        item.has_discount = true
-      else
-        item.update(item_params)
-        item.has_discount = false
-      end
+      item.update(item_params)
+      item.has_discount = params[:item][:discount_percentage] != 0
     end
   end
 end
