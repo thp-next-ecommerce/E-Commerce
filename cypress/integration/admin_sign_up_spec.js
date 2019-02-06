@@ -4,8 +4,8 @@ describe('Admin sign_up test', function() {
 
     cy.get('.footer-text').contains("S'inscrire").click()
     cy.get('#admin_email')
-      .type('test@123.com')
-      .should('have.value', 'test@123.com')
+      .type('admin@gmail.com')
+      .should('have.value', 'admin@gmail.com')
     cy.get('#admin_password')
       .type('azerty123')
       .should('have.value', 'azerty123')
