@@ -19,8 +19,6 @@ Rails.application.routes.draw do
     root 'administration/items#index', as: :admin_root
   end
   root to: 'items#index'
-  get 'contact', to: 'static_pages#contact'
-  get 'about', to: 'static_pages#about'
   # Shop
   resources :charges, only: %i[new create]
   resources :items, only: %i[index show]

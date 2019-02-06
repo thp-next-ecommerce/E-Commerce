@@ -6,7 +6,9 @@
 	<h4>Total du panier : <%= current_order.subtotal %>€</h4>
 	<br>
 
-	<div id="stripe-button">
-	  <%= render  "stripe_pay_button" %>
-	</div>
+	<% if current_order.subtotal > 0 %>
+		<div id="stripe-button">
+	  	<%= render  "stripe_pay_button" %>
+		</div>
+	<% end %>
 </center>
