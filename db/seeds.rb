@@ -19,6 +19,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.delete_all
+Admin.create!(
+  email: 'admin@test.com',
+  password: "password"
+)
 5.times do |i|
   Admin.create!(
     email: Faker::Internet.unique.email,
@@ -36,6 +40,9 @@ Edition.delete_all
   p "edition #{i} : créée"
 end
 
+OrderItem.delete_all
+Order.delete_all
+
 Item.delete_all
 50.times do |i|
   Item.create!(
@@ -48,6 +55,12 @@ Item.delete_all
 end
 
 User.delete_all
+user = User.new(
+  email: 'user@test.com',
+  password: "password"
+)
+user.skip_confirmation!
+user.save
 10.times do |i|
   user = User.new(
     email: Faker::Internet.unique.email,
@@ -63,3 +76,14 @@ OrderStatus.create! id: 1, name: "En cours"
 OrderStatus.create! id: 2, name: "Confirmé"
 OrderStatus.create! id: 3, name: "Envoyé"
 OrderStatus.create! id: 4, name: "Annulé"
+
+10.times do |i|
+  Order.create!(
+    subtotal: Faker::Number.between(5, 100),
+    tax: Faker::Number.between(1, 5),
+    shipping: Faker::Number.between(1, 5),
+    total: Faker::Number.between(50, 130),
+    user: User.all.sample
+  )
+  puts "seeded Order #{i}"
+end
