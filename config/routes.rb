@@ -1,23 +1,21 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Admin management
-  require "sidekiq/web"
-  authenticate :admin do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-  namespace 'administration' do
-    resources :items, :orders, :admins, :users
-  end
   # Base
   devise_for :admins
   devise_for :users
+  root to: 'items#index'
+
+  # Admin management
+  require "sidekiq/web"
+  namespace 'administration' do
+    resources :items, :orders, :admins, :users
+  end
+  authenticate :admin do mount Sidekiq::Web => '/sidekiq' end
   authenticated :admin do
     root 'administration/items#index', as: :admin_root
   end
-  root to: 'items#index'
-  get 'contact', to: 'static_pages#contact'
-  get 'about', to: 'static_pages#about'
+
   # Shop
   resources :charges, only: %i[new create]
   resources :items, only: %i[index show] do
@@ -28,6 +26,7 @@ Rails.application.routes.draw do
   get '/orders/:id/close', to: 'orders#close', as: 'close_order'
   post '/orders/:id/close', to: 'orders#close'
   resources :order_items, only: %i[create update destroy]
+
   # User order
   resources :users, only: %i[show] do
     resources :orders, only: %i[index show]
