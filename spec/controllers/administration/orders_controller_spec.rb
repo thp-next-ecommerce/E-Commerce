@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Administration::OrdersController, type: :controller do
   let(:status) { create(:in_progress_status) }
+  let(:placed_status) { create(:with_placed_status) }
   let(:order) { create(:order) }
   let(:order_item) { create(:order_item, order: order) }
   let(:params) { { id: order.id, order: attributes_for(:placed_order) } }
@@ -13,6 +14,7 @@ RSpec.describe Administration::OrdersController, type: :controller do
   before do
     sign_in admin
     status
+    placed_status
     order
     order.order_items << order_item
   end

@@ -26,7 +26,8 @@ class Order < ApplicationRecord
   belongs_to :order_status
   has_many :order_items, dependent: :nullify
 
-  before_validation :set_order_status
+  before_validation :set_order_status,
+                    if: proc { |order| order.new_record? }
   before_save :update_subtotal
 
   def subtotal
