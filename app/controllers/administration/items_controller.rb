@@ -33,7 +33,6 @@ module Administration
       item = Item.find(params[:id])
       update_item(item)
       item_valid?(item)
-      redirect_to administration_items_path
     end
 
     private
@@ -49,11 +48,17 @@ module Administration
       else
         flash[:alert] = item.errors.full_messages
       end
+      redirect_to administration_items_path
     end
 
     def update_item(item)
-      item.update(item_params)
-      item.has_discount = params[:item][:discount_percentage] != 0
+      if params[:item][:discount_percentage] != 0
+        item.update(item_params)
+        item.has_discount = true
+      else
+        item.update(item_params)
+        item.has_discount = false
+      end
     end
 
     def delete_item(item)
