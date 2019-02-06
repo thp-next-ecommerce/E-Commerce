@@ -79,11 +79,11 @@ OrderStatus.create! id: 4, name: "Annulé"
 
 10.times do |i|
   Order.create!(
-    subtotal: Faker::Number.between(5,100),
+    subtotal: Faker::Number.between(5, 100),
     tax: Faker::Number.between(1, 5),
     shipping: Faker::Number.between(1, 5),
     total: Faker::Number.between(50, 130),
     user: User.all.sample
-    )
-    puts "seeded Order #{i}"
+  )
+  puts "seeded Order #{i}"
 end

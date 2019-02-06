@@ -59,5 +59,7 @@ RSpec.describe OrdersController, type: :controller do
       current_order = controller.view_context.current_order
       expect(current_order).not_to eq order.reload
     end
+
+    it { is_expected.to render_template('close') }
   end
 end

@@ -31,6 +31,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
   gem 'guard-rspec', require: false
   gem 'pry-byebug', '~> 3.6'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'sandi_meter', '~> 1.2'
 end
