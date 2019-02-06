@@ -34,5 +34,6 @@ FactoryBot.define do
     end
 
     factory :in_progress_status, traits: [:in_progress]
+    factory :with_placed_status, traits: [:placed]
   end
 end

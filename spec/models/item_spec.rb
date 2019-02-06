@@ -18,7 +18,7 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  subject(:item) { create(:item) }
+  subject(:item) { create(:item_without_discount) }
 
   let(:new_item) { build_stubbed(:item) }
 
@@ -69,6 +69,8 @@ RSpec.describe Item, type: :model do
   describe '.price' do
     it 'matches price.item ' do
       item.original_price = 20
+      item.save
+      item.reload
       expect { item.update(discounted_percentage: 50, has_discount: true) }.to change(item, :price).from(20).to(10)
     end
   end
