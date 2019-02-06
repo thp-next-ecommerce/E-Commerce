@@ -20,7 +20,9 @@ module Administration
 
     def destroy
       item = Item.find(params[:id])
-      delete_item(item)
+      item.destroy
+      flash[:notice] = "Product has been deleted successfuly"
+      redirect_to administration_items_path
     end
 
     def create
@@ -59,15 +61,6 @@ module Administration
         item.update(item_params)
         item.has_discount = false
       end
-    end
-
-    def delete_item(item)
-      if item.destroy
-        flash[:notice] = "Product has been deleted successfuly"
-      else
-        flash[:alert] = item.erros.full_messages
-      end
-      redirect_to administration_items_path
     end
   end
 end
