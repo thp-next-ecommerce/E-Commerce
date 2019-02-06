@@ -4,8 +4,8 @@ describe('User add item to basket', function() {
 
     cy.contains('Se connecter').click()
     cy.get('#user_email')
-      .type('user@gmail.com')
-      .should('have.value', 'user@gmail.com')
+      .type('tarek@gmail.com')
+      .should('have.value', 'tarek@gmail.com')
     cy.get('#user_password')
       .type('azerty123')
       .should('have.value', 'azerty123')
@@ -15,5 +15,13 @@ describe('User add item to basket', function() {
     cy.get('img').first().click()
     cy.contains('Ajouter au panier').click()
     cy.get('.basket-text').click()
+
+
+    cy.get('#order_item_quantity')
+      .clear()
+      .type('2')
+    cy.contains('Actualiser la quantité').click().reload()
+
+    cy.get('.stripe-button-el').click()
   })
 })
