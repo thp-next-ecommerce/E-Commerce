@@ -4,8 +4,8 @@ describe('User sign_up test', function() {
 
     cy.contains("S'inscrire").click()
     cy.get('#user_email')
-      .type('alexis@gmail.com')
-      .should('have.value', 'alexis@gmail.com')
+      .type('user@gmail.com')
+      .should('have.value', 'user@gmail.com')
     cy.get('#user_password')
       .type('azerty123')
       .should('have.value', 'azerty123')
