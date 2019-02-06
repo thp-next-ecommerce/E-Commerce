@@ -24,6 +24,6 @@ FactoryBot.define do
       association :order_status, id: 2, name: "Placed"
     end
 
-    factory :placed_order, traits: :placed_status
+    factory :placed_order, traits: [:placed_status]
   end
 end

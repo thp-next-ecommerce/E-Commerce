@@ -2,7 +2,7 @@
 
 class ItemsController < ApplicationController
   def index
-    @items = Item.active.paginate(page: params[:page], per_page: 15)
+    @items = Item.active.page(params[:page]).per(15)
     @order_items = current_order.order_items.new
   end
 

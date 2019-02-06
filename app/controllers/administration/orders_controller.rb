@@ -30,10 +30,10 @@ module Administration
       if result
         order.update(order_params)
         flash[:notice] = "Commande mise à jour"
+        redirect_to administration_orders_path
       else
         flash[:alert] = order.errors.full_messages
       end
-      redirect_to administration_orders_path
     end
   end
 end

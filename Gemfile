@@ -17,6 +17,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'kaminari'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.1', '>= 5.2.1.1'
@@ -25,11 +26,9 @@ gem 'sidekiq'
 gem 'stripe', '~> 4.7'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
-  gem 'guard-rspec', require: false
   gem 'pry-byebug', '~> 3.6'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
@@ -38,6 +37,7 @@ end
 
 group :development do
   gem 'annotate', '~> 2.7', '>= 2.7.4'
+  gem 'guard-rspec', require: false
   gem 'husky', '~> 0.5.15'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', '~> 0.60.0', require: false
@@ -48,6 +48,7 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', '~> 0.16.1', require: false
 end

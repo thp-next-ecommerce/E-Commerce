@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   # Shop
   resources :charges, only: %i[new create]
-  resources :items, only: %i[index show]
+  resources :items, only: %i[index show] do
+    get ':page', action: :index, on: :collection
+  end
   resource :basket, only: [:show]
   resources :orders, only: %i[index show]
   get '/orders/:id/close', to: 'orders#close', as: 'close_order'
