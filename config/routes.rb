@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   resources :items, only: %i[index show]
   resource :basket, only: [:show]
   resources :orders, only: %i[index show]
-  post '/orders/:id/close', to: 'orders#close', as: 'close_order'
+  get '/orders/:id/close', to: 'orders#close', as: 'close_order'
+  post '/orders/:id/close', to: 'orders#close'
   resources :order_items, only: %i[create update destroy]
   # User order
   resources :users, only: %i[show] do

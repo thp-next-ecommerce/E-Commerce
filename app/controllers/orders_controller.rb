@@ -18,5 +18,6 @@ class OrdersController < ApplicationController
     @order.order_status_id = 2
     @order.save
     session[:order_id] = nil
+    redirect_to user_order_path(@order.user.id, @order.id)
   end
 end

@@ -11,8 +11,7 @@ RSpec.describe OrdersController, type: :controller do
 
     context "when user is logged in" do
       it "returns http success" do
-        user = create(:user)
-        sign_in user
+        sign_in create(:user)
         expect(get_index).to have_http_status(:success)
       end
     end
@@ -44,10 +43,6 @@ RSpec.describe OrdersController, type: :controller do
       session[:order_id] = order.id
     end
 
-    it "returns http success" do
-      expect(close_order_request).to have_http_status(:success)
-    end
-
     it "changes the status of an Order to 'Confirmé'" do
       close_order_request
       order.reload
@@ -60,6 +55,6 @@ RSpec.describe OrdersController, type: :controller do
       expect(current_order).not_to eq order.reload
     end
 
-    it { is_expected.to render_template('close') }
+    it { is_expected.to redirect_to(user_order_path(order.user.id, order.id)) }
   end
 end
