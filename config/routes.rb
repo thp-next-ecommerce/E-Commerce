@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   root to: 'items#index'
   # Shop
   resources :charges, only: %i[new create]
-  resources :items, only: %i[index show]
+  resources :items, only: %i[index show] do
+    get ':page', action: :index, on: :collection
+  end
   resource :basket, only: [:show]
   resources :order_items, only: %i[create update destroy]
   # User order
