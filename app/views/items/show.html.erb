@@ -8,11 +8,8 @@
   <p>Prix : <b><%= @item.price %>€</b></p>
   <br>
 
-  <%= form_for @order_item, remote: true do |f| %>
-    <div class="input-group">
-      <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-      <%= f.hidden_field :item_id, value: @item.id %>
-      <%= f.submit "Ajouter au panier", class: "btn btn-primary" %>
-    </div>
+  <% if user_signed_in? %> 
+    <%= render  "layouts/add_to_cart", item: @item, order_item: @order_item %>
   <% end %>
+
 </div>
