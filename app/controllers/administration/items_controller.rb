@@ -40,7 +40,7 @@ module Administration
     private
 
     def item_params
-      params.require(:item).permit(:name, :discounted_percentage, :original_price, :active, :description)
+      @item_params ||= params.require(:item).permit(:name, :discounted_percentage, :original_price, :active, :description)
     end
 
     def item_valid?(item)

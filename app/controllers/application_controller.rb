@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  rescue_from ActionController::ParameterMissing, with: :bad_parameters
+  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   helper_method :current_order
-  before_action :set_locale
+  before_action :set_locale 
 
   def current_order
     return Order.find(session[:order_id]) if session[:order_id]
@@ -16,5 +19,21 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def bad_parameters(exception)
+    flash[:error] = e.message
+    redirect_to(root_path)
+  end
+
+  def record_not_found
+    flash[:error] = "Record not found"
+    puts "--------Record not found-----"
+    redirect_to(root_path)
+  end
+
+  def record_invalid(e)
+    flash[:error] = "Something went wrong: #{e.record.errors.full_messages.join(", ")}"
+    redirect_to(root_path)
   end
 end
