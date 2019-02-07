@@ -2,7 +2,7 @@
 
 class ApplicationController < ActionController::Base
   rescue_from ActionController::ParameterMissing, with: :bad_parameters
-  # rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   helper_method :current_order
   before_action :set_locale 
@@ -22,18 +22,18 @@ class ApplicationController < ActionController::Base
   end
 
   def bad_parameters(exception)
-    flash[:error] = e.message
+    flash[:alert] = e.message
     redirect_to(root_path)
   end
 
   def record_not_found
-    flash[:error] = "Record not found"
+    flash[:alert] = "Record not found"
     puts "--------Record not found-----"
     redirect_to(root_path)
   end
 
   def record_invalid(e)
-    flash[:error] = "Something went wrong: #{e.record.errors.full_messages.join(", ")}"
+    flash[:alert] = "Something went wrong: #{e.record.errors.full_messages.join(", ")}"
     redirect_to(root_path)
   end
 end
