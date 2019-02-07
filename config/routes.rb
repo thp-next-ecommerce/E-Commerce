@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   # Shop
   resources :charges, only: %i[new create]
   resources :items, only: %i[index show] do
-    get ':page', action: :index, on: :collection
+    get 'page/:page', action: :index, on: :collection
   end
   resource :basket, only: [:show]
   resources :orders, only: %i[index show]
