@@ -2,4 +2,5 @@
 alert("not valid.")
 <% else %>
   $(".basket-text").html("<%= j(render 'layouts/basket_text') %>")
+  $("#add_to_cart").html("<%= j(render 'layouts/add_to_cart') %>")
 <% end %>
