@@ -19,10 +19,17 @@ RSpec.describe "items/show.html.erb", type: :view do
   end
 
   context "when a user IS logged in," do
-    it "shows the 'add to cart' button" do
-      sign_in create(:user)
+    before do sign_in create(:user) end
+
+    it "shows the 'add to cart' button when the item is not in the cart" do
       render
       expect(rendered).to include 'Ajouter au panier'
+    end
+
+    it "changes the cart button to 'Ajouté' when item is already in cart" do
+      # assign(:order_item, create(:order_item, item: create(:item)))
+      render
+      expect(rendered).to include 'Ajouté'
     end
   end
 end
