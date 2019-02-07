@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   # Base
   devise_for :admins
   devise_for :users
-  root to: 'items#index'
 
   # Admin management
   require "sidekiq/web"
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   # Shop
+  root to: 'items#index'
   resources :charges, only: %i[new create]
   resources :items, only: %i[index show] do
     get 'page/:page', action: :index, on: :collection
