@@ -26,10 +26,15 @@ RSpec.describe "items/show.html.erb", type: :view do
       expect(rendered).to include 'Ajouter au panier'
     end
 
-    it "displays 2 buttons when item is already in cart" do
+    it "displays 'Retour au shop' buttons when item is already in cart" do
       assign(:order_item, create(:order_item, item: create(:item)))
       render
       expect(rendered).to include 'Retour au shop'
+    end
+
+    it "displays 'Finaliser votre commande' when item is already in cart" do
+      assign(:order_item, create(:order_item, item: create(:item)))
+      render
       expect(rendered).to include 'Finaliser votre commande'
     end
   end
