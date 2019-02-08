@@ -1,6 +1,10 @@
 <div class="container jumbotron">
 	<h1><%= @item.name %></h1>
   <br>
+  <% if @item.image.attached? %>
+    <%= image_tag(@item.image) %> 
+  <% end %>
+
   <% if @item.discounted_percentage > 0 %>
 	  <p>Prix de départ : <%= @item.original_price.to_i %>€</p>
 	  <p>Pourcentage de remise : <%= @item.discounted_percentage %>%</p>
