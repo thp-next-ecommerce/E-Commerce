@@ -36,6 +36,6 @@ class Item < ApplicationRecord
   paginates_per 15
 
   def price
-    has_discount ? (original_price.to_i * (1 - discounted_percentage.to_f / 100)).round(2) : original_price.to_i
+    has_discount ? (original_price.to_f * (1 - discounted_percentage.to_f / 100)).round(2) : original_price.to_f
   end
 end
