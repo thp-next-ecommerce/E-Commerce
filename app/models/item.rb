@@ -33,6 +33,7 @@ class Item < ApplicationRecord
   scope :newest_first, lambda { order("created_at DESC") }
   scope :with_discount, lambda { where(has_discount: true) }
   scope :without_discount, lambda { where(has_discount: false) }
+  paginates_per 15
 
   def price
     has_discount ? (original_price.to_i * (1 - discounted_percentage.to_f / 100)).round(2) : original_price.to_i

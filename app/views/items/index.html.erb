@@ -7,7 +7,7 @@
 <div class="row">
   <% @items.each do |item| %>
     <div class="card col-lg-3 col-md-6 col-xs-12">
-      <a href="items/<%= item.id %>">
+      <a href="<%= item_path(item.id) %>">
       <img class="card-img-top" src="<%= item.image.attached? ? item.image : item.image_url %>" alt="<%= item.name %>">
       <div class="card-body">
         <h5 class="card-title"><%= item.name %></a></h5>
