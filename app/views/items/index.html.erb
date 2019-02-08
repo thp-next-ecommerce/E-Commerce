@@ -1,11 +1,14 @@
 <h1 class="text-center">Bienvenue à Magic Project</h1>
+<h6 class="text-center">
+  <small class="text-muted h6">Les meilleures cartes à prix Ruby</small>
+</h6> 
 <br><br>
 
 <div class="row">
   <% @items.each do |item| %>
     <div class="card col-lg-3 col-md-6 col-xs-12">
       <a href="items/<%= item.id %>">
-      <img class="card-img-top" src="https://via.placeholder.com/300" alt="<%= item.name %>">
+      <img class="card-img-top" src="<%= item.image.attached? ? item.image : item.image_url %>" alt="<%= item.name %>">
       <div class="card-body">
         <h5 class="card-title"><%= item.name %></a></h5>
         <p class="card-text"><%= item.description %></p>

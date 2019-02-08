@@ -6,17 +6,17 @@
   </button>
   
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav d-flex justify-content-between w-100">
+    <ul class="navbar-nav d-flex justify-content-between text-center w-100">
       <li class="nav-item">
         <%= link_to 'Accueil', items_path, class: "nav-link" %>
       </li>
       
+      <% if user_signed_in? %>
       <li class="nav-item">
         <span class="basket-text"><%= render 'layouts/basket_text' %></span>
       </li>
       
-      <% if user_signed_in? %>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown d-flex flex-column">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Profil </a>
         <div class="dropdown-menu float-right header-dropdown" aria-labelledby="navbarDropdown">
