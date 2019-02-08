@@ -1,17 +1,19 @@
 <div class="container jumbotron">
-	<h1><%= @item.name %></h1>
+	<div class="text-center">
+    <h1><%= @item.name %></h1>
+    <br>
+    <% if @item.image.attached? %>
+      <%= image_tag(@item.image, class: "items__image") %> 
+    <% elsif !@item.image_url.nil? %>
+      <%= image_tag(@item.image_url, class: "items__image") %>     
+    <% end %>
+  </div>
   <br>
-  <% if @item.image.attached? %>
-    <%= image_tag(@item.image, class: "items__image") %> 
-  <% elsif !@item.image_url.nil? %>
-    <%= image_tag(@item.image_url, class: "items__image") %>     
-  <% end %>
-
   <% if @item.discounted_percentage > 0 %>
 	  <p>Prix de départ : <%= @item.original_price.to_f %>€</p>
 	  <p>Pourcentage de remise : <%= @item.discounted_percentage %>%</p>
   <% end %>
-  <p>Texte : <%= @item.description %></p>
+  <p class="text-justify">Texte : <%= @item.description %></p>
   <p>Prix : <b><%= @item.price %>€</b></p>
   <br>
 
