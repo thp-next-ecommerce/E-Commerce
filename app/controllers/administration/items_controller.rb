@@ -35,12 +35,13 @@ module Administration
       item = Item.find(params[:id])
       update_item(item)
       item_valid?(item)
+      redirect_to administration_items_path
     end
 
     private
 
     def item_params
-      params.require(:item).permit(:name, :discounted_percentage, :original_price, :active, :description)
+      params.require(:item).permit(:name, :discounted_percentage, :original_price, :active, :description, :image)
     end
 
     def item_valid?(item)
@@ -50,7 +51,6 @@ module Administration
       else
         flash[:alert] = item.errors.full_messages
       end
-      redirect_to administration_items_path
     end
 
     def update_item(item)
