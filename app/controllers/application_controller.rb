@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   helper_method :current_order
-  before_action :set_locale 
+  before_action :set_locale
 
   def current_order
     return Order.find(session[:order_id]) if session[:order_id]
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def bad_parameters(exception)
+  def bad_parameters(*)
     flash[:alert] = e.message
     redirect_to(root_path)
   end
@@ -32,8 +32,10 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
-  def record_invalid(e)
-    flash[:alert] = "Something went wrong: #{e.record.errors.full_messages.join(", ")}"
+  def record_invalid(*)
+    puts "----record_invalid-----"
+    puts "Something went wrong: #{e.record.errors.full_messages.join(', ')}"
+    flash[:alert] = "Something went wrong: #{e.record.errors.full_messages.join(', ')}"
     redirect_to(root_path)
   end
 end
