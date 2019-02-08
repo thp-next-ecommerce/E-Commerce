@@ -3,6 +3,8 @@
   <br>
   <% if @item.image.attached? %>
     <%= image_tag(@item.image, class: "items__image") %> 
+  <% elsif !@item.image_url.nil? %>
+    <%= image_tag(@item.image_url, class: "items__image") %>     
   <% end %>
 
   <% if @item.discounted_percentage > 0 %>
