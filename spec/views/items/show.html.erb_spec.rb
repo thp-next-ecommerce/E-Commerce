@@ -12,14 +12,9 @@ RSpec.describe "items/show.html.erb", type: :view do
   end
 
   context "when a user is NOT logged in," do
-    it "doesn't show the 'Ajouter au panier' button" do
+    it "does show the 'Ajouté' button" do
       render
-      expect(rendered).not_to include 'Ajouter au panier'
-    end
-
-    it "doesn't show the 'Ajouté' button" do
-      render
-      expect(rendered).not_to include 'Ajouté'
+      expect(rendered).to include 'Se connecter'
     end
   end
 
@@ -31,10 +26,16 @@ RSpec.describe "items/show.html.erb", type: :view do
       expect(rendered).to include 'Ajouter au panier'
     end
 
-    it "changes the cart button to 'Ajouté' when item is already in cart" do
+    it "displays 'Retour au shop' buttons when item is already in cart" do
       assign(:order_item, create(:order_item, item: create(:item)))
       render
-      expect(rendered).to include 'Ajouté'
+      expect(rendered).to include 'Retour au shop'
+    end
+
+    it "displays 'Finaliser votre commande' when item is already in cart" do
+      assign(:order_item, create(:order_item, item: create(:item)))
+      render
+      expect(rendered).to include 'Finaliser votre commande'
     end
   end
 end
