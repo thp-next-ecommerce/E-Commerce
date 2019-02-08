@@ -13,6 +13,7 @@
 #  active                :boolean          default(TRUE)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  image_url             :string
 #
 
 require 'rails_helper'
