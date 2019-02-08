@@ -2,7 +2,7 @@
 	<h1><%= @item.name %></h1>
   <br>
   <% if @item.image.attached? %>
-    <%= image_tag(@item.image) %> 
+    <%= image_tag(@item.image, class: "items__image") %> 
   <% end %>
 
   <% if @item.discounted_percentage > 0 %>
