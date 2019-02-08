@@ -18,6 +18,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
 Admin.delete_all
 Admin.create!(
   email: 'admin@test.com',
@@ -44,10 +46,17 @@ OrderItem.delete_all
 Order.delete_all
 
 Item.delete_all
-50.times do |i|
+25.times do |i|
+  # HTTP request for random Magic images
+  puts "starting HTTP request for random image"
+  response = open("https://api.scryfall.com/cards/random").read
+  card = JSON.parse(response)
+  puts 'HTTP request done'
+
   Item.create!(
     name: Faker::Name.unique.name,
     description: Faker::WorldOfWarcraft.quote,
+    image_url: card.dig('image_uris', 'normal'),
     original_price: Faker::Number.between(1, 100),
     discounted_percentage: 0
   )
