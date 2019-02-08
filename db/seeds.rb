@@ -51,13 +51,14 @@ Item.delete_all
   puts "starting HTTP request for random image"
   response = open("https://api.scryfall.com/cards/random").read
   card = JSON.parse(response)
+  sleep 0.05
   puts 'HTTP request done'
 
   Item.create!(
-    name: Faker::Name.unique.name,
-    description: Faker::WorldOfWarcraft.quote,
+    name: card.dig('name'),
+    description: card.dig('oracle_text'),
     image_url: card.dig('image_uris', 'normal'),
-    original_price: Faker::Number.between(1, 100),
+    original_price: card.dig('usd') || Faker::Number.between(1, 5),
     discounted_percentage: 0
   )
   p "item #{i} : créé"
